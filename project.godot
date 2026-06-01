@@ -12,7 +12,15 @@ config_version=5
 
 config/name="NES Jam 2026"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/textures/icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://assets/": "yellow",
+"res://levels/": "green"
+}
 
 [physics]
 
