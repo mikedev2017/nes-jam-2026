@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c76u4nmf3k5m7"]
+
+[ext_resource type="Texture2D" uid="uid://dyq2lk0cutkq2" path="res://assets/textures/Kenny-Tiles (Grayscale)/tile_0001.png" id="1_3wbe6"]
+[ext_resource type="Texture2D" uid="uid://cdygbkxrqu1tx" path="res://assets/textures/Night_Sky_BG.png" id="1_ql24p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql24p"]
+size = Vector2(256, 32)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3wbe6"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ql24p"]
+normal = Vector2(-1, 0)
+
+[node name="TestingSandboxLevel" type="Node2D" unique_id=1484228740]
+
+[node name="NightSkyBg" type="Sprite2D" parent="." unique_id=1956395924]
+texture = ExtResource("1_ql24p")
+centered = false
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=63263476]
+position = Vector2(128, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=604532697]
+shape = SubResource("RectangleShape2D_ql24p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=747588884]
+texture_filter = 1
+texture_repeat = 2
+use_parent_material = true
+texture = ExtResource("1_3wbe6")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 32)
+
+[node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1901571142]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=791006351]
+shape = SubResource("WorldBoundaryShape2D_3wbe6")
+
+[node name="RightBoundary" type="StaticBody2D" parent="." unique_id=1367986373]
+position = Vector2(256, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary" unique_id=2144795561]
+shape = SubResource("WorldBoundaryShape2D_ql24p")
