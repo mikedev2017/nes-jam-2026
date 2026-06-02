@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdygbkxrqu1tx" path="res://assets/textures/Night_Sky_BG.png" id="1_ql24p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ql24p"]
-size = Vector2(256, 32)
+size = Vector2(88, 32)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3wbe6"]
 normal = Vector2(1, 0)
@@ -22,15 +22,30 @@ centered = false
 position = Vector2(128, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=604532697]
+position = Vector2(-84, 0)
 shape = SubResource("RectangleShape2D_ql24p")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=747588884]
 texture_filter = 1
 texture_repeat = 2
 use_parent_material = true
+position = Vector2(-84, 0)
 texture = ExtResource("1_3wbe6")
 region_enabled = true
-region_rect = Rect2(0, 0, 256, 32)
+region_rect = Rect2(0, 0, 88, 32)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=1382904986]
+position = Vector2(84, 0)
+shape = SubResource("RectangleShape2D_ql24p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Floor" unique_id=1715711464]
+texture_filter = 1
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(84, 0)
+texture = ExtResource("1_3wbe6")
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 32)
 
 [node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1901571142]
 
