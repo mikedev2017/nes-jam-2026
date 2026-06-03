@@ -48,3 +48,12 @@ func handle_jump():
 
 func _on_timer_timeout() -> void:
 	is_coyote_time = false
+
+func add_to_inventory(data: ItemData):
+	# We pass the data to our Autoload (Singleton)
+	InventorySystem.add_item(data)
+	
+	# Optional: Trigger a visual effect or sound
+	print("Player received: " + str(data.name))
+	
+	# TODO: mark item as collected so that if player dies the item is not added back

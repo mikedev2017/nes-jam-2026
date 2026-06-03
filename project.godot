@@ -15,6 +15,10 @@ run/main_scene="uid://curtma6o4rtp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/textures/icon.svg"
 
+[autoload]
+
+InventorySystem="*uid://d3kqxcc7mp2et"
+
 [display]
 
 window/size/viewport_width=256
