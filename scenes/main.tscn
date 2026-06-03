@@ -10,4 +10,9 @@ script = ExtResource("1_0wfyh")
 [node name="TestingSandboxLevel" parent="." unique_id=1484228740 instance=ExtResource("2_sugp2")]
 
 [node name="PlayerCharacter" parent="TestingSandboxLevel" unique_id=154401341 instance=ExtResource("3_sugp2")]
-position = Vector2(126, 190)
+position = Vector2(13, 190)
+
+[node name="CoyoteTimer" type="Timer" parent="TestingSandboxLevel" unique_id=910362060]
+one_shot = true
+
+[connection signal="timeout" from="TestingSandboxLevel/CoyoteTimer" to="TestingSandboxLevel/PlayerCharacter" method="_on_timer_timeout"]
