@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b08p1kcc5d52x"]
+
+[ext_resource type="Script" uid="uid://b7eoqk1p72w0t" path="res://assets/scripts/item_data.gd" id="1_00b5m"]
+[ext_resource type="Texture2D" uid="uid://4vxdq3rgvc2q" path="res://assets/textures/Kenny-Tiles (Grayscale)/tile_0034.png" id="1_tfmmm"]
+
+[resource]
+script = ExtResource("1_00b5m")
+name = "coin"
+icon = ExtResource("1_tfmmm")
+metadata/_custom_type_script = "uid://b7eoqk1p72w0t"
