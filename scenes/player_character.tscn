@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://b0em6bikvhm4t"]
 
-[ext_resource type="Script" uid="uid://b37av8pif0501" path="res://assets/scripts/player_controller.gd" id="1_6r27q"]
+[ext_resource type="Script" uid="uid://b37av8pif0501" path="res://assets/scripts/player_character.gd" id="1_6r27q"]
 [ext_resource type="Texture2D" uid="uid://bghjv36vlmqhf" path="res://assets/textures/icon.svg" id="2_kww55"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4h0vy"]
 radius = 8.0
 height = 32.0
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=154401341]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=154401341 node_paths=PackedStringArray("coyote_timer")]
 script = ExtResource("1_6r27q")
+coyote_timer = NodePath("CoyoteTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854438354]
 shape = SubResource("CapsuleShape2D_4h0vy")
@@ -17,3 +18,6 @@ shape = SubResource("CapsuleShape2D_4h0vy")
 modulate = Color(2.1168277, 1.1238538, 0, 1)
 scale = Vector2(0.13, 0.25)
 texture = ExtResource("2_kww55")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1294832940]
+wait_time = 0.15

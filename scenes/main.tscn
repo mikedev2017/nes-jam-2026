@@ -10,9 +10,11 @@ script = ExtResource("1_0wfyh")
 
 [node name="TestingSandboxLevel" parent="." unique_id=1484228740 instance=ExtResource("2_sugp2")]
 
-[node name="PlayerCharacter" parent="TestingSandboxLevel" unique_id=154401341 instance=ExtResource("3_sugp2")]
+[node name="PlayerCharacter" parent="TestingSandboxLevel" unique_id=154401341 node_paths=PackedStringArray("coyote_timer") instance=ExtResource("3_sugp2")]
 z_index = 4
 position = Vector2(13, 190)
+jump_velocity = -400.0
+coyote_timer = NodePath("../CoyoteTimer")
 
 [node name="CoyoteTimer" type="Timer" parent="TestingSandboxLevel" unique_id=910362060]
 one_shot = true
