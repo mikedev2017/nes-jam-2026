@@ -6,8 +6,9 @@ class_name PlayerCharacter extends CharacterBody2D
 @export var deceleration : float = 10
 @export_category("Jump Handling")
 @export var jump_velocity : float = -300
+@export var coyote_timer: Timer
 @export var coyoteWaitTime: float = 0.15
-@onready var coyote_timer: Timer = $"../CoyoteTimer"
+
 var is_coyote_time: bool = false
 var can_jump: bool = false
 
