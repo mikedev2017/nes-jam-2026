@@ -18,6 +18,7 @@ config/icon="res://assets/textures/icon.svg"
 [autoload]
 
 InventorySystem="*uid://d3kqxcc7mp2et"
+SceneLoader="*uid://yesiyfnqo7xw"
 
 [display]
 

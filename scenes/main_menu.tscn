@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://sewcrur7v0xu"]
+
+[ext_resource type="Script" uid="uid://bofiyb2jkd5iq" path="res://assets/scripts/menu/main_menu.gd" id="1_fu7sn"]
+
+[node name="Main_Menu" type="Control" unique_id=2007233280]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="Start_Menu" type="VBoxContainer" parent="." unique_id=842483387]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -50.5
+offset_right = 52.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Start_Menu" unique_id=428044271]
+layout_mode = 2
+text = "Title of Game"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="Start_Menu" unique_id=1877380875]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Start"
+
+[node name="Quit" type="Button" parent="Start_Menu" unique_id=1283706571]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="Start_Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start_Menu/Quit" to="." method="_on_quit_pressed"]
