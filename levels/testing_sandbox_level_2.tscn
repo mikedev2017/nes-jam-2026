@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cdygbkxrqu1tx" path="res://assets/textures/Night_Sky_BG.png" id="1_7noq5"]
 [ext_resource type="Texture2D" uid="uid://dyq2lk0cutkq2" path="res://assets/textures/Kenny-Tiles (Grayscale)/tile_0001.png" id="2_0p2gf"]
-[ext_resource type="PackedScene" uid="uid://b0em6bikvhm4t" path="res://scenes/player_character.tscn" id="3_0p2gf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ql24p"]
 size = Vector2(256, 32)
@@ -43,6 +42,3 @@ position = Vector2(256, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary" unique_id=2144795561]
 shape = SubResource("WorldBoundaryShape2D_ql24p")
-
-[node name="PlayerCharacter" parent="." unique_id=154401341 instance=ExtResource("3_0p2gf")]
-position = Vector2(120, 191)

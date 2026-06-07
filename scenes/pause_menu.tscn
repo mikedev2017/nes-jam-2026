@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dts7bwirue7ra"]
 
-[ext_resource type="Script" uid="uid://chw5r44srxerd" path="res://assets/scripts/pause_menu.gd" id="1_myx47"]
-[ext_resource type="Shader" uid="uid://b631p8uj8kaf3" path="res://scenes/pause_menu.gdshader" id="2_kukqi"]
+[ext_resource type="Script" uid="uid://chw5r44srxerd" path="res://assets/scripts/menus/pause_menu.gd" id="1_myx47"]
+[ext_resource type="Shader" uid="uid://b631p8uj8kaf3" path="res://assets/shaders/pause_menu.gdshader" id="2_kukqi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
 shader = ExtResource("2_kukqi")
@@ -69,7 +69,7 @@ _data = {
 &"blur": SubResource("Animation_v4r4p")
 }
 
-[node name="PauseMenu" type="Control" unique_id=1799207050]
+[node name="PauseMenu" type="Control" unique_id=1799207050 node_paths=PackedStringArray("animation_player")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -78,6 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_myx47")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="BackgroundBlur" type="ColorRect" parent="." unique_id=1439017908]
 material = SubResource("ShaderMaterial_5d2l8")
@@ -119,3 +120,7 @@ text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1310843154]
 libraries/ = SubResource("AnimationLibrary_1s2dm")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
