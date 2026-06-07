@@ -1,23 +1,19 @@
 [gd_scene format=3 uid="uid://curtma6o4rtp"]
 
-[ext_resource type="Script" uid="uid://dlvidqjyxnlo" path="res://assets/scripts/game_manager.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://c76u4nmf3k5m7" path="res://levels/testing_sandbox_level.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://7r0w6gepvpnw" path="res://levels/testing_sandbox_level_2.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b0em6bikvhm4t" path="res://scenes/player_character.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://com8fwmpp4ahs" path="res://assets/scripts/pickup_coin.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dts7bwirue7ra" path="res://scenes/pause_menu.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node" unique_id=91855917]
-script = ExtResource("1_0wfyh")
 
-[node name="TestingSandboxLevel" parent="." unique_id=1484228740 instance=ExtResource("2_sugp2")]
+[node name="TestingSandboxLevel2" parent="." unique_id=1484228740 instance=ExtResource("2_sugp2")]
 
-[node name="PlayerCharacter" parent="TestingSandboxLevel" unique_id=154401341 instance=ExtResource("3_sugp2")]
+[node name="PlayerCharacter" parent="TestingSandboxLevel2" unique_id=154401341 instance=ExtResource("3_sugp2")]
 z_index = 4
 position = Vector2(13, 190)
+jump_velocity = -400.0
 
-[node name="CoyoteTimer" type="Timer" parent="TestingSandboxLevel" unique_id=910362060]
-one_shot = true
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1127985073]
 
-[node name="Area2D" parent="." unique_id=511834113 instance=ExtResource("4_jyhfs")]
-position = Vector2(212, 178)
-
-[connection signal="timeout" from="TestingSandboxLevel/CoyoteTimer" to="TestingSandboxLevel/PlayerCharacter" method="_on_timer_timeout"]
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1799207050 instance=ExtResource("4_jyhfs")]
+visible = false

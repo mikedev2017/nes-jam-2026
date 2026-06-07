@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bgdu6j58ffpbi"]
+
+[ext_resource type="Script" uid="uid://tcddx4ofmgl0" path="res://assets/scripts/utility/loading_screen.gd" id="1_u38me"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ms7iy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_xo20d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0xy8w"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jiiy"]
+_data = {
+&"RESET": SubResource("Animation_xo20d"),
+&"transition": SubResource("Animation_0xy8w")
+}
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=2025527419 node_paths=PackedStringArray("animation_player")]
+layer = 10
+script = ExtResource("1_u38me")
+animation_player = NodePath("transition")
+
+[node name="Panel" type="Panel" parent="." unique_id=1761936066]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ms7iy")
+
+[node name="transition" type="AnimationPlayer" parent="." unique_id=1333008105]
+libraries/ = SubResource("AnimationLibrary_7jiiy")
+autoplay = &"transition"

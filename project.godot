@@ -18,6 +18,8 @@ config/icon="res://assets/textures/icon.svg"
 [autoload]
 
 InventorySystem="*uid://d3kqxcc7mp2et"
+SceneLoader="*uid://yesiyfnqo7xw"
+GameManager="*uid://dlvidqjyxnlo"
 
 [display]
 
@@ -30,9 +32,11 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://addons/": "red",
-"res://assets/": "yellow",
-"res://levels/": "green"
+"res://addons/": "gray",
+"res://assets/": "red",
+"res://concept_art/": "blue",
+"res://levels/": "green",
+"res://scenes/": "yellow"
 }
 
 [input]
