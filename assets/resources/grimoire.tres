@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bt47l0mm8v1rr"]
+
+[ext_resource type="Script" uid="uid://b7eoqk1p72w0t" path="res://assets/scripts/item_data.gd" id="1_ckpnw"]
+
+[resource]
+script = ExtResource("1_ckpnw")
+name = "grimoire"
+metadata/_custom_type_script = "uid://b7eoqk1p72w0t"
