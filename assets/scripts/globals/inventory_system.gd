@@ -18,3 +18,7 @@ func add_item(item: ItemData):
 		print("Collected: ", item.name, ". Total is now: ", item.value)
 		print("The totals number of items in inventory is " + str(items.size()))
 		
+		# If player picks up grimoire set global variable so it isn't added back to scene
+		if item.name == "grimoire":
+			GameManager.has_grimoire = true
+		
