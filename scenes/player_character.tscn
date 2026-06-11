@@ -1,7 +1,65 @@
 [gd_scene format=3 uid="uid://b0em6bikvhm4t"]
 
 [ext_resource type="Script" uid="uid://b37av8pif0501" path="res://assets/scripts/player_character.gd" id="1_6r27q"]
-[ext_resource type="Texture2D" uid="uid://bghjv36vlmqhf" path="res://assets/textures/icon.svg" id="2_kww55"]
+[ext_resource type="Texture2D" uid="uid://jwu37w08mw8v" path="res://assets/textures/Wolf girl run.png" id="2_6r27q"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_kww55"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_uj7mf"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_2vmgx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kww55"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h0vy"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj7mf"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vmgx"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6unfe"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxja8"]
+atlas = ExtResource("2_6r27q")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iadup"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kww55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h0vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vmgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6unfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxja8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 4.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4h0vy"]
 radius = 8.0
@@ -11,14 +69,34 @@ height = 32.0
 script = ExtResource("1_6r27q")
 coyote_timer = NodePath("CoyoteTimer")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=173339429]
+sprite_frames = SubResource("SpriteFrames_iadup")
+animation = &"run"
+frame_progress = 0.22614938
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854438354]
 shape = SubResource("CapsuleShape2D_4h0vy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346469097]
-modulate = Color(2.1168277, 1.1238538, 0, 1)
-scale = Vector2(0.13, 0.25)
-texture = ExtResource("2_kww55")
+hframes = 6
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1294832940]
 wait_time = 0.05
 one_shot = true
+
+[node name="StateChart" type="Node" parent="." unique_id=722610067]
+script = ExtResource("3_kww55")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=1056122029]
+script = ExtResource("4_uj7mf")
+initial_state = NodePath("Jumping")
+
+[node name="Walking" type="Node" parent="StateChart/Root" unique_id=323439760]
+script = ExtResource("5_2vmgx")
+
+[node name="Jumping" type="Node" parent="StateChart/Root" unique_id=1169853546]
+script = ExtResource("5_2vmgx")
+
+[node name="Idle" type="Node" parent="StateChart/Root" unique_id=2019394110]
+script = ExtResource("5_2vmgx")
