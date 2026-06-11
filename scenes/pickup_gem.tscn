@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://com8fwmpp4ahs"]
+[gd_scene format=3 uid="uid://dtdrst3ya2pa5"]
 
-[ext_resource type="Script" uid="uid://ux2mnvkipkwo" path="res://assets/scripts/pickup.gd" id="1_lkri5"]
-[ext_resource type="Resource" uid="uid://b08p1kcc5d52x" path="res://assets/resources/gem.tres" id="2_ncb32"]
-[ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="3_xkahq"]
+[ext_resource type="Script" uid="uid://ux2mnvkipkwo" path="res://assets/scripts/pickup.gd" id="1_k8w2c"]
+[ext_resource type="Resource" uid="uid://b08p1kcc5d52x" path="res://assets/resources/gem.tres" id="2_srgal"]
+[ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="3_vr1yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb32"]
 size = Vector2(16, 15)
 
 [node name="Area2D" type="Area2D" unique_id=511834113]
-script = ExtResource("1_lkri5")
-item_data = ExtResource("2_ncb32")
+script = ExtResource("1_k8w2c")
+item_data = ExtResource("2_srgal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900256427]
 position = Vector2(0, -0.5)
@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_ncb32")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=226922423]
 texture_filter = 1
-texture = ExtResource("3_xkahq")
+texture = ExtResource("3_vr1yr")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 

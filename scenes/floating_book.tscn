@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ds4uuth8mr584"]
+
+[ext_resource type="Script" uid="uid://dy12w24jfbooo" path="res://assets/scripts/floating_book.gd" id="1_hk3tb"]
+[ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="1_mh2x6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk3tb"]
+size = Vector2(18, 5)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=467407645]
+script = ExtResource("1_hk3tb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=21728895]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_hk3tb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1923758054]
+texture_filter = 1
+texture = ExtResource("1_mh2x6")
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 16)

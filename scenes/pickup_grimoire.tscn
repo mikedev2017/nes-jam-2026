@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://uo8i2cj6ujoc"]
+
+[ext_resource type="Script" uid="uid://ux2mnvkipkwo" path="res://assets/scripts/pickup.gd" id="1_t30wi"]
+[ext_resource type="Resource" uid="uid://b08p1kcc5d52x" path="res://assets/resources/gem.tres" id="2_w4a3f"]
+[ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="3_t30wi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb32"]
+size = Vector2(25, 32)
+
+[node name="Area2D" type="Area2D" unique_id=511834113 groups=["Grimoire"]]
+script = ExtResource("1_t30wi")
+item_data = ExtResource("2_w4a3f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900256427]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_ncb32")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=226922423]
+texture = ExtResource("3_t30wi")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1008367693]
+position = Vector2(16, 0)
+texture = ExtResource("3_t30wi")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
