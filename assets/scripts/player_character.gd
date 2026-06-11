@@ -12,8 +12,10 @@ class_name PlayerCharacter extends CharacterBody2D
 var is_coyote_time: bool = false
 var can_jump: bool = false
 
+
 func _ready() -> void:
 	coyote_timer.wait_time = coyoteWaitTime
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -46,6 +48,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
 func handle_jump():
 	if Input.is_action_just_pressed("a_button") and (can_jump or is_coyote_time):
 		velocity.y = jump_velocity
@@ -53,8 +56,10 @@ func handle_jump():
 		# disable if you want to add double jumping
 		can_jump = false
 
+
 func _on_timer_timeout() -> void:
 	is_coyote_time = false
+
 
 func add_to_inventory(data: ItemData):
 	# We pass the data to our Autoload (Singleton)
