@@ -81,7 +81,8 @@ shape = SubResource("CapsuleShape2D_4h0vy")
 hframes = 6
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1294832940]
-wait_time = 0.15
+wait_time = 0.05
+one_shot = true
 
 [node name="StateChart" type="Node" parent="." unique_id=722610067]
 script = ExtResource("3_kww55")

@@ -22,3 +22,12 @@ func add_item(item: ItemData):
 		if item.name == "grimoire":
 			GameManager.has_grimoire = true
 		
+	# If player picks up a gem, increase the global gem count and score
+	if item.name == "gem":
+		GameManager.gem_count +=1
+		GameManager.score += 100
+		
+		# If player collects 100 gems add an extra life 1UP
+		if GameManager.gem_count == 100:
+			GameManager.player_lives += 1
+		
