@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uo8i2cj6ujoc"]
 
 [ext_resource type="Script" uid="uid://ux2mnvkipkwo" path="res://assets/scripts/pickup.gd" id="1_t30wi"]
-[ext_resource type="Resource" uid="uid://b08p1kcc5d52x" path="res://assets/resources/coin.tres" id="2_w4a3f"]
+[ext_resource type="Resource" uid="uid://b08p1kcc5d52x" path="res://assets/resources/gem.tres" id="2_w4a3f"]
 [ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="3_t30wi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb32"]

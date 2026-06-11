@@ -36,15 +36,15 @@ func _ready() -> void:
 	targetPositions.append(POS08)
 	targetPositions.append(POS09)
 	targetPositions.append(POS10)
-	print("size of array is " + str(targetPositions.size()))
+	#print("size of array is " + str(targetPositions.size()))
 	target_position = targetPositions[1].global_position
-	print("global position x of node is " + str(targetPositions[1].global_position.x))
+	#print("global position x of node is " + str(targetPositions[1].global_position.x))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	global_position = global_position.move_toward(target_position, speed * delta)
-	print("Target pos.x is " + str(target_position.x) + " and Target pos.y is " + str(target_position.y))
+	#print("Target pos.x is " + str(target_position.x) + " and Target pos.y is " + str(target_position.y))
 	if !readArrayInReverse:
 		# if the platform has reached its target position
 		# move to the next target position
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 					target_position = targetPositions[currentTargetNode].global_position
 				# if not loop movement reverse movement
 				if !loopMovement:
-					print("Reached last node in array, reverse reverse")
+					#print("Reached last node in array, reverse reverse")
 					currentTargetNode -= 1
 					target_position = targetPositions[currentTargetNode].global_position
 					readArrayInReverse = true
@@ -71,27 +71,27 @@ func _physics_process(delta: float) -> void:
 						target_position = targetPositions[currentTargetNode].global_position
 					# if not loop movement reverse movement
 					if !loopMovement:
-						print("Next node is null, reverse reverse")
+						#print("Next node is null, reverse reverse")
 						currentTargetNode -= 1
 						target_position = targetPositions[currentTargetNode].global_position
 						readArrayInReverse = true
 				elif targetPositions[currentTargetNode+1] != null:
-					print("Business as usual, read next node forwards")
+					#print("Business as usual, read next node forwards")
 					currentTargetNode += 1
 					target_position = targetPositions[currentTargetNode].global_position
 	if readArrayInReverse:	
-		print("Read array in reverse")
+		#print("Read array in reverse")
 		# if the platform has reached its target position
 		# move to the next target position
 		if global_position == target_position:
 			# if you've reached the first node in the array and you're moving backwards, 
 			# count up to go to next node to move forwards
 			if currentTargetNode == 0:
-				print("Reached first node in array, forward march")
+				#print("Reached first node in array, forward march")
 				currentTargetNode += 1
 				target_position = targetPositions[currentTargetNode].global_position
 				readArrayInReverse = false
 			else:
-				print("Business as usual, read next node in reverse")
+				#print("Business as usual, read next node in reverse")
 				currentTargetNode -= 1
 				target_position = targetPositions[currentTargetNode].global_position

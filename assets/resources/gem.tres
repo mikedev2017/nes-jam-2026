@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b08p1kcc5d52x"]
 
 [ext_resource type="Script" uid="uid://b7eoqk1p72w0t" path="res://assets/scripts/item_data.gd" id="1_00b5m"]
-[ext_resource type="Texture2D" uid="uid://4vxdq3rgvc2q" path="res://assets/textures/Kenny-Tiles (Grayscale)/tile_0034.png" id="1_tfmmm"]
+[ext_resource type="Texture2D" uid="uid://bxue88wiik1me" path="res://assets/textures/temp_level_tiles.png" id="1_tfmmm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4vnx"]
+atlas = ExtResource("1_tfmmm")
+region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_00b5m")
-name = "coin"
-icon = ExtResource("1_tfmmm")
+name = "gem"
+icon = SubResource("AtlasTexture_b4vnx")
 metadata/_custom_type_script = "uid://b7eoqk1p72w0t"
