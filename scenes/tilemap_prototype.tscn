@@ -128,7 +128,7 @@ coyoteWaitTime = 0.05
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter" unique_id=1557721466]
 position = Vector2(39, 15)
 offset = Vector2(0, -72)
-limit_bottom = 200
+limit_bottom = 100
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.5
