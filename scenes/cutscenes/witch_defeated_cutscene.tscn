@@ -92,6 +92,7 @@ _data = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1714818436]
 libraries/ = SubResource("AnimationLibrary_001wx")
+autoplay = &"witch_defeated"
 
 [node name="WitchThroughTheWall" type="Sprite2D" parent="." unique_id=1412245826]
 position = Vector2(128, 120)
