@@ -43,6 +43,10 @@ folder_colors={
 "res://scenes/": "yellow"
 }
 
+[global_group]
+
+player="Player group"
+
 [input]
 
 dev_exit={

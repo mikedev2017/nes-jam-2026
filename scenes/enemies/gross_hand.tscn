@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d3pomryk6vuwq"]
+
+[ext_resource type="Texture2D" uid="uid://4b5yyva5jgyk" path="res://assets/textures/enemies/The_hand_part_duex.png" id="1_v0jpw"]
+
+[node name="GrossHand" type="Node2D" unique_id=846975149]
+
+[node name="TheHandPartDuex" type="Sprite2D" parent="." unique_id=375076383]
+rotation = 1.5707964
+texture = ExtResource("1_v0jpw")
