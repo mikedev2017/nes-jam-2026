@@ -61,9 +61,8 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4h0vy"]
-radius = 8.0
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj7mf"]
+size = Vector2(21, 18)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=154401341 node_paths=PackedStringArray("coyote_timer")]
 script = ExtResource("1_6r27q")
@@ -75,7 +74,8 @@ animation = &"run"
 frame_progress = 0.22614938
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854438354]
-shape = SubResource("CapsuleShape2D_4h0vy")
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_uj7mf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346469097]
 hframes = 6
