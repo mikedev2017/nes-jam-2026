@@ -19,9 +19,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if is_coyote_time:
-		handle_jump()
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -31,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		coyote_timer.start()
 		is_coyote_time = true
 
-	if is_on_floor():
+	if is_on_floor() or is_coyote_time:
 		can_jump = true
 		handle_jump()
 	elif velocity.y < 0.0:
@@ -50,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func handle_jump():
-	if Input.is_action_just_pressed("a_button") and (can_jump or is_coyote_time):
+	if Input.is_action_just_pressed("a_button") and can_jump:
 		velocity.y = jump_velocity
 		# prevent infinite jumping
 		# disable if you want to add double jumping
@@ -59,6 +56,8 @@ func handle_jump():
 
 func _on_timer_timeout() -> void:
 	is_coyote_time = false
+	if !is_on_floor():
+		can_jump = false
 
 
 func add_to_inventory(data: ItemData):
