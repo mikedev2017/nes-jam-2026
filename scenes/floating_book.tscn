@@ -12,6 +12,7 @@ script = ExtResource("1_hk3tb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=21728895]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_hk3tb")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1923758054]
 texture_filter = 1
