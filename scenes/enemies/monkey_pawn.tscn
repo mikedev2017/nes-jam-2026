@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8qx52okyj1f1" path="res://assets/scripts/monkey_pawn.gd" id="1_g023v"]
 [ext_resource type="Texture2D" uid="uid://cwa7l6vpxxmac" path="res://assets/textures/enemies/monkey-pawn-Sheet.png" id="1_qj28j"]
-[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="2_rgch0"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="2_rgch0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgch0"]
 atlas = ExtResource("1_qj28j")

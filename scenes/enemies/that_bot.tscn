@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cy81lppgjr5fl"]
 
-[ext_resource type="Script" uid="uid://c8qx52okyj1f1" path="res://assets/scripts/monkey_pawn.gd" id="1_lfdpf"]
+[ext_resource type="Script" uid="uid://dvshcgkyof88c" path="res://assets/scripts/that_bot.gd" id="1_lfdpf"]
 [ext_resource type="Texture2D" uid="uid://dhfan0ot868o" path="res://assets/textures/enemies/That_bot-Sheet.png" id="2_lfdpf"]
-[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="3_fyrrf"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="3_fyrrf"]
+[ext_resource type="PackedScene" uid="uid://c7ncyk3jfqfin" path="res://scenes/character_utilities/hitbox.tscn" id="4_6dy5p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6dy5p"]
 atlas = ExtResource("2_lfdpf")
@@ -69,7 +70,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdlp6"]
-size = Vector2(18, 21.5)
+size = Vector2(18, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyrrf"]
+size = Vector2(18, 21)
 
 [node name="ThatBot" type="Node2D" unique_id=2042441848]
 script = ExtResource("1_lfdpf")
@@ -77,13 +81,22 @@ script = ExtResource("1_lfdpf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1756036403]
 sprite_frames = SubResource("SpriteFrames_t4xte")
 animation = &"new_animation"
-frame_progress = 0.92616826
+frame_progress = 0.09189539
 
 [node name="Hurtbox" parent="." unique_id=389597393 instance=ExtResource("3_fyrrf")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1796178698]
-position = Vector2(0, 4.75)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_vdlp6")
+
+[node name="Hitbox" parent="." unique_id=90253197 groups=["enemy_damage"] instance=ExtResource("4_6dy5p")]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=113259706]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_fyrrf")
+debug_color = Color(0.96793634, 1.2513996e-06, 0.47413158, 0.41960785)
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_2vmgx"]
 [ext_resource type="Texture2D" uid="uid://bdcao27pxuwh5" path="res://assets/textures/Scratch_ani.png" id="6_2vmgx"]
 [ext_resource type="Script" uid="uid://cowadulgde5j2" path="res://assets/scripts/hitbox.gd" id="7_6unfe"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="8_pxja8"]
 
 [sub_resource type="Animation" id="Animation_6unfe"]
 length = 0.001
@@ -33,6 +34,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scratch_Attack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_pxja8"]
@@ -62,6 +75,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scratch_Attack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25000167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iadup"]
@@ -171,6 +196,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxja8"]
 size = Vector2(16, 16)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iadup"]
+radius = 6.0
+height = 16.0
+
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=154401341 node_paths=PackedStringArray("coyote_timer", "animation_player", "animated_sprite_2d", "scratch_attack", "scratch_collision")]
 script = ExtResource("1_6r27q")
 coyote_timer = NodePath("CoyoteTimer")
@@ -187,7 +216,7 @@ sprite_frames = SubResource("SpriteFrames_iadup")
 animation = &"run"
 frame_progress = 0.9390199
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854438354]
+[node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=854438354]
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_4h0vy")
 
@@ -213,13 +242,14 @@ script = ExtResource("5_2vmgx")
 script = ExtResource("5_2vmgx")
 
 [node name="Scratch_Attack" type="AnimatedSprite2D" parent="." unique_id=792177211]
+visible = false
 z_index = 2
 position = Vector2(14, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_c4hvp")
 animation = &"scratch"
 
-[node name="Hitbox" type="Area2D" parent="Scratch_Attack" unique_id=803614000]
+[node name="Hitbox" type="Area2D" parent="Scratch_Attack" unique_id=803614000 groups=["player_damage"]]
 z_index = 1
 scale = Vector2(2, 2)
 script = ExtResource("7_6unfe")
@@ -230,4 +260,15 @@ shape = SubResource("RectangleShape2D_pxja8")
 disabled = true
 debug_color = Color(0.9769748, 0, 0.41136557, 0.41960785)
 
+[node name="Hurtbox" parent="." unique_id=389597393 instance=ExtResource("8_pxja8")]
+collision_layer = 1
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1962393932]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_iadup")
+debug_color = Color(0, 0.5501016, 0.20052683, 0.41960785)
+
 [connection signal="frame_changed" from="Scratch_Attack" to="." method="_on_scratch_attack_frame_changed"]
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

@@ -46,8 +46,8 @@ folder_colors={
 
 [global_group]
 
-player="Player group"
-player_attack="Attacks from the Player"
+player_damage="Attacks from the Player"
+enemy_damage=""
 
 [input]
 

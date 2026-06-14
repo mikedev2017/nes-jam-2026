@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0em6bikvhm4t" path="res://scenes/player_character.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dts7bwirue7ra" path="res://scenes/pause_menu.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://de0q1ad1blld3" path="res://scenes/enemies/bouncy_ball.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cy81lppgjr5fl" path="res://scenes/enemies/that_bot.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node" unique_id=91855917]
 
@@ -20,10 +21,18 @@ position = Vector2(77, 194)
 
 [node name="Hitbox" parent="PlayerCharacter/Scratch_Attack" parent_id_path=PackedInt32Array(154401341, 792177211) index="0" unique_id=803614000 groups=["player_attack"]]
 
-[node name="BouncyBall" parent="." unique_id=2042441848 instance=ExtResource("4_tbgi4")]
+[node name="BouncyBall" parent="." unique_id=2042441848 groups=["enemy_damage"] instance=ExtResource("4_tbgi4")]
 position = Vector2(145, 190)
 
-[node name="Witch" parent="." unique_id=2063747052 instance=ExtResource("3_jyhfs")]
+[node name="Witch" parent="." unique_id=2063747052 groups=["enemy_damage"] instance=ExtResource("3_jyhfs")]
 position = Vector2(190, 192)
 
+[node name="ThatBot" parent="." unique_id=1871884623 instance=ExtResource("6_tefeu")]
+position = Vector2(228, 192)
+
 [editable path="PlayerCharacter"]
+[editable path="BouncyBall"]
+[editable path="BouncyBall/Hurtbox"]
+[editable path="Witch"]
+[editable path="ThatBot"]
+[editable path="ThatBot/Hurtbox"]

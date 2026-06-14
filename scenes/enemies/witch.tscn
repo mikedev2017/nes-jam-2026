@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d1t1soadwxvmq" path="res://assets/scripts/witch.gd" id="1_5hmvl"]
 [ext_resource type="Texture2D" uid="uid://vgxfnrs3eb7t" path="res://assets/textures/enemies/Ze_Witch-Sheet.png" id="1_6cmf1"]
-[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="2_5hmvl"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="2_5hmvl"]
+[ext_resource type="PackedScene" uid="uid://c7ncyk3jfqfin" path="res://scenes/character_utilities/hitbox.tscn" id="4_waymy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_waymy"]
 radius = 7.0
@@ -71,6 +72,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp6bp"]
+radius = 7.0
+
 [node name="Witch" type="CharacterBody2D" unique_id=2063747052 node_paths=PackedStringArray("hurtbox")]
 collision_layer = 4
 motion_mode = 1
@@ -83,7 +87,7 @@ shape = SubResource("CapsuleShape2D_waymy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854697377]
 sprite_frames = SubResource("SpriteFrames_a7n1t")
 autoplay = "default"
-frame_progress = 0.3106988
+frame_progress = 0.53385264
 
 [node name="Hurtbox" parent="." unique_id=389597393 instance=ExtResource("2_5hmvl")]
 health_points = 3
@@ -91,6 +95,14 @@ health_points = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=684270005]
 shape = SubResource("CapsuleShape2D_waymy")
 debug_color = Color(0, 0.625059, 0.38660103, 0.41960785)
+
+[node name="Hitbox" parent="." unique_id=90253197 groups=["enemy_damage"] instance=ExtResource("4_waymy")]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=698494917]
+shape = SubResource("CapsuleShape2D_dp6bp")
+debug_color = Color(0.9667905, 0, 0.48132145, 0.41960785)
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

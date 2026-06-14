@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cowadulgde5j2" path="res://assets/scripts/hitbox.gd" id="1_0vdsg"]
 
-[node name="Hitbox" type="Area2D" unique_id=90253197 groups=["player_global_attack"]]
+[node name="Hitbox" type="Area2D" unique_id=90253197]
 collision_mask = 4
 script = ExtResource("1_0vdsg")
 

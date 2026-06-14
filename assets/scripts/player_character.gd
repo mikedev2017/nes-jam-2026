@@ -86,3 +86,11 @@ func add_to_inventory(data: ItemData):
 	print("Player received: " + str(data.name))
 	
 	# TODO: mark item as collected so that if player dies the item is not added back
+
+
+func _on_hurtbox_received_damage() -> void:
+	print("Wolf girl took damage")
+
+
+func _on_hurtbox_died() -> void:
+	print("Wolf girl died")

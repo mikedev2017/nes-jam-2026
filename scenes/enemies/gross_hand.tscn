@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3pomryk6vuwq"]
 
 [ext_resource type="Texture2D" uid="uid://4b5yyva5jgyk" path="res://assets/textures/enemies/The_hand_part_duex.png" id="1_v0jpw"]
-[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="2_m5mkk"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="2_m5mkk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcecv"]
 radius = 4.0

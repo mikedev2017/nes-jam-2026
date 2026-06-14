@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cnr6kuvw4jdn2" path="res://assets/scripts/bouncy_ball.gd" id="1_sn0e6"]
 [ext_resource type="Texture2D" uid="uid://duanfelsbty68" path="res://assets/textures/enemies/bouncyball-baddie-Sheet.png" id="2_sn0e6"]
-[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="3_sumvp"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="3_sumvp"]
+[ext_resource type="PackedScene" uid="uid://c7ncyk3jfqfin" path="res://scenes/character_utilities/hitbox.tscn" id="4_do0oo"]
 
 [sub_resource type="Animation" id="Animation_do0oo"]
 length = 0.001
@@ -25,6 +26,18 @@ tracks/1/path = NodePath("Hurtbox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -59,6 +72,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-6, 7), Vector2(-4, 3), Vector2(-2, 2), Vector2(1, 4), Vector2(3.9999998, 5), Vector2(6, 7), Vector2(2, 3), Vector2(-1, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, 7), Vector2(-4, 3), Vector2(-2, 2), Vector2(1, 4), Vector2(4, 5), Vector2(6, 7), Vector2(2, 3), Vector2(-1, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wmn1q"]
@@ -155,6 +180,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1uo2"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sumvp"]
+radius = 9.0
+
 [node name="BouncyBall" type="Node2D" unique_id=2042441848]
 script = ExtResource("1_sn0e6")
 
@@ -170,6 +198,14 @@ sprite_frames = SubResource("SpriteFrames_t4xte")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1796178698]
 shape = SubResource("CircleShape2D_x1uo2")
 metadata/_edit_lock_ = true
+
+[node name="Hitbox" parent="." unique_id=90253197 groups=["enemy_damage"] instance=ExtResource("4_do0oo")]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1261472667]
+shape = SubResource("CircleShape2D_sumvp")
+debug_color = Color(0.97264916, 0, 0.4428873, 0.41960785)
 
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]
