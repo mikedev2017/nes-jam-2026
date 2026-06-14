@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b0idnextvpcjn"]
 
+[ext_resource type="Script" uid="uid://c8qx52okyj1f1" path="res://assets/scripts/monkey_pawn.gd" id="1_g023v"]
 [ext_resource type="Texture2D" uid="uid://cwa7l6vpxxmac" path="res://assets/textures/enemies/monkey-pawn-Sheet.png" id="1_qj28j"]
 [ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/hurtbox.tscn" id="2_rgch0"]
 
@@ -120,15 +121,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 16.0
+"speed": 14.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgch0"]
+radius = 5.0
+height = 22.0
+
 [node name="MonkeyPawn" type="Node2D" unique_id=2042441848]
+script = ExtResource("1_g023v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1756036403]
 sprite_frames = SubResource("SpriteFrames_t4xte")
-frame_progress = 0.529641
 
 [node name="Hurtbox" parent="." unique_id=389597393 instance=ExtResource("2_rgch0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1796178698]
+position = Vector2(-5, 5)
+shape = SubResource("CapsuleShape2D_rgch0")
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]
 
 [editable path="Hurtbox"]
