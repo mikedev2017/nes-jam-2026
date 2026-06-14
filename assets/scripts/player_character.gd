@@ -8,6 +8,11 @@ class_name PlayerCharacter extends CharacterBody2D
 @export var jump_velocity : float = -300
 @export var coyote_timer: Timer
 @export var coyoteWaitTime: float = 0.10
+@export_category("Character")
+@export var animation_player: AnimationPlayer
+@export var animated_sprite_2d: AnimatedSprite2D
+@export var scratch_attack: AnimatedSprite2D
+@export var scratch_collision: CollisionShape2D
 
 var is_coyote_time: bool = false
 var can_jump: bool = false
@@ -15,6 +20,7 @@ var can_jump: bool = false
 
 func _ready() -> void:
 	coyote_timer.wait_time = coyoteWaitTime
+	scratch_collision.disabled = true
 
 
 func _physics_process(delta: float) -> void:
@@ -39,9 +45,21 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("d_pad_left", "d_pad_right")
 	if direction:
+		if direction > 0:
+			animated_sprite_2d.flip_h = false
+			scratch_attack.position = Vector2(14,0)
+			scratch_attack.flip_h = false
+		elif direction < 0:
+			animated_sprite_2d.flip_h = true
+			scratch_attack.position = Vector2(-13,0)
+			scratch_attack.flip_h = true
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	
+	if Input.is_action_just_pressed("b_button"):
+		animation_player.play("scratch_attack")
+		
 
 	move_and_slide()
 
@@ -68,3 +86,11 @@ func add_to_inventory(data: ItemData):
 	print("Player received: " + str(data.name))
 	
 	# TODO: mark item as collected so that if player dies the item is not added back
+
+
+func _on_hurtbox_received_damage() -> void:
+	print("Wolf girl took damage")
+
+
+func _on_hurtbox_died() -> void:
+	print("Wolf girl died")

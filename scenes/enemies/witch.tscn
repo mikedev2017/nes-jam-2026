@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dp6wep4sku4be"]
+
+[ext_resource type="Script" uid="uid://d1t1soadwxvmq" path="res://assets/scripts/witch.gd" id="1_5hmvl"]
+[ext_resource type="Texture2D" uid="uid://vgxfnrs3eb7t" path="res://assets/textures/enemies/Ze_Witch-Sheet.png" id="1_6cmf1"]
+[ext_resource type="PackedScene" uid="uid://bjrcn0ruoqi7y" path="res://scenes/character_utilities/hurtbox.tscn" id="2_5hmvl"]
+[ext_resource type="PackedScene" uid="uid://c7ncyk3jfqfin" path="res://scenes/character_utilities/hitbox.tscn" id="4_waymy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_waymy"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp6bp"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5kc7"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poo5m"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4d8q"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi026"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2noce"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn8fn"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f383"]
+atlas = ExtResource("1_6cmf1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7n1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp6bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5kc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poo5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4d8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2noce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn8fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f383")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp6bp"]
+radius = 7.0
+
+[node name="Witch" type="CharacterBody2D" unique_id=2063747052 node_paths=PackedStringArray("hurtbox")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_5hmvl")
+hurtbox = NodePath("Hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=748716440]
+shape = SubResource("CapsuleShape2D_waymy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854697377]
+sprite_frames = SubResource("SpriteFrames_a7n1t")
+autoplay = "default"
+frame_progress = 0.53385264
+
+[node name="Hurtbox" parent="." unique_id=389597393 instance=ExtResource("2_5hmvl")]
+health_points = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=684270005]
+shape = SubResource("CapsuleShape2D_waymy")
+debug_color = Color(0, 0.625059, 0.38660103, 0.41960785)
+
+[node name="Hitbox" parent="." unique_id=90253197 groups=["enemy_damage"] instance=ExtResource("4_waymy")]
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=698494917]
+shape = SubResource("CapsuleShape2D_dp6bp")
+debug_color = Color(0.9667905, 0, 0.48132145, 0.41960785)
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="received_damage" from="Hurtbox" to="." method="_on_hurtbox_received_damage"]

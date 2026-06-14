@@ -40,8 +40,14 @@ folder_colors={
 "res://assets/": "red",
 "res://concept_art/": "blue",
 "res://levels/": "green",
+"res://resources/": "purple",
 "res://scenes/": "yellow"
 }
+
+[global_group]
+
+player_damage="Attacks from the Player"
+enemy_damage=""
 
 [input]
 
@@ -108,6 +114,7 @@ select_button={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="World"
+2d_physics/layer_3="Enemy"
 
 [physics]
 
